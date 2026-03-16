@@ -1,117 +1,80 @@
 abstract class Room {
 
-    private String roomType;
-    private int beds;
-    private double price;
+    int beds;
+    int size;
+    double price;
+    int available;
 
-    public Room(String roomType, int beds, double price) {
-        this.roomType = roomType;
+    public Room(int beds, int size, double price, int available) {
         this.beds = beds;
+        this.size = size;
         this.price = price;
+        this.available = available;
     }
 
-    public String getRoomType() {
-        return roomType;
-    }
-
-    public int getBeds() {
-        return beds;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public abstract void displayDetails();
+    abstract void display();
 }
-
 
 /* Single Room */
 class SingleRoom extends Room {
 
     public SingleRoom() {
-        super("Single Room", 1, 2000);
+        super(1, 250, 1500.0, 5);
     }
 
-    @Override
-    public void displayDetails() {
-        System.out.println("Room Type : " + getRoomType());
-        System.out.println("Beds      : " + getBeds());
-        System.out.println("Price     : ₹" + getPrice());
+    void display() {
+        System.out.println("Single Room:");
+        System.out.println("Beds: " + beds);
+        System.out.println("Size: " + size + " sqft");
+        System.out.println("Price per night: " + price);
+        System.out.println("Available: " + available);
     }
 }
-
 
 /* Double Room */
 class DoubleRoom extends Room {
 
     public DoubleRoom() {
-        super("Double Room", 2, 3500);
+        super(2, 400, 2500.0, 3);
     }
 
-    @Override
-    public void displayDetails() {
-        System.out.println("Room Type : " + getRoomType());
-        System.out.println("Beds      : " + getBeds());
-        System.out.println("Price     : ₹" + getPrice());
+    void display() {
+        System.out.println("Double Room:");
+        System.out.println("Beds: " + beds);
+        System.out.println("Size: " + size + " sqft");
+        System.out.println("Price per night: " + price);
+        System.out.println("Available: " + available);
     }
 }
-
 
 /* Suite Room */
 class SuiteRoom extends Room {
 
     public SuiteRoom() {
-        super("Suite Room", 3, 6000);
+        super(3, 750, 5000.0, 2);
     }
 
-    @Override
-    public void displayDetails() {
-        System.out.println("Room Type : " + getRoomType());
-        System.out.println("Beds      : " + getBeds());
-        System.out.println("Price     : ₹" + getPrice());
+    void display() {
+        System.out.println("Suite Room:");
+        System.out.println("Beds: " + beds);
+        System.out.println("Size: " + size + " sqft");
+        System.out.println("Price per night: " + price);
+        System.out.println("Available: " + available);
     }
 }
-
-
 
 public class UC2 {
 
     public static void main(String[] args) {
 
-        System.out.println("=================================");
-        System.out.println("   BookMyStayApp - Version 2.1");
-        System.out.println("   Room Availability");
-        System.out.println("=================================");
+        System.out.println("Hotel Room Initialization");
 
-
-        // Create Room Objects (Polymorphism)
         Room single = new SingleRoom();
-        Room doubleRoom = new DoubleRoom();
+        Room doub = new DoubleRoom();
         Room suite = new SuiteRoom();
 
-
-        // Static Availability
-        int singleAvailability = 5;
-        int doubleAvailability = 3;
-        int suiteAvailability = 2;
-
-
-        System.out.println("\nSingle Room Details:");
-        single.displayDetails();
-        System.out.println("Available Rooms : " + singleAvailability);
-
-
-        System.out.println("\nDouble Room Details:");
-        doubleRoom.displayDetails();
-        System.out.println("Available Rooms : " + doubleAvailability);
-
-
-        System.out.println("\nSuite Room Details:");
-        suite.displayDetails();
-        System.out.println("Available Rooms : " + suiteAvailability);
-
-
-        System.out.println("\nApplication terminated.");
+        single.display();
+        doub.display();
+        suite.display();
     }
 }
