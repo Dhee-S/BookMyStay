@@ -15,7 +15,6 @@ class Room {
         this.price = price;
         this.available = available;
     }
-
     public void display(String roomType) {
         System.out.println(roomType + ":");
         System.out.println("Beds: " + beds);
